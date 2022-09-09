@@ -1,0 +1,17 @@
+<v-app-bar dark flat height="57px" tile prominent
+src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg" app
+>
+    <div v-if="!mini">
+        <v-btn
+          icon
+          @click.stop="mini = !mini"
+        >
+          <v-icon>mdi-chevron-left</v-icon>
+        </v-btn>
+    </div>
+    <v-toolbar-title>{{ data.app_name }}</v-toolbar-title>
+    <v-spacer></v-spacer>
+    <v-btn icon href="{% url 'logout' %}">
+        <v-icon>mdi-export</v-icon>
+    </v-btn>
+</v-app-bar>

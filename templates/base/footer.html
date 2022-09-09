@@ -1,0 +1,28 @@
+<v-footer 
+dark
+padless
+app>
+    <v-card
+      class="flex"
+      flat
+      tile
+    >
+        <v-card-text class="py-2 white--text flex dis" style="display: flex">
+            <strong class="subheading">Get connected with us on social networks!</strong>
+            <v-spacer></v-spacer>
+            <copy-right></copy-right> — <strong>{{ data.app_name }}</strong>
+            <v-spacer></v-spacer>
+            {% for icon in data.footer.icons %}
+                <v-btn
+                class="mx-4"
+                dark
+                icon
+                >
+                <v-icon size="24px">
+                    {{ icon }}
+                </v-icon>
+                </v-btn>
+            {% endfor %}
+        </v-card-text>
+    </v-card>
+</v-footer>

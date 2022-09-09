@@ -1,0 +1,8 @@
+{% extends 'base/login_index.html' %}
+{% block content %}
+    <script type="text/x-template" id="app-login">
+        {% include './components/view.html' %}
+    </script>
+    <app-login :pydata="{{data}}"></app-login>
+{% endblock content %}
+    

@@ -1,0 +1,17 @@
+<div class="right-bar">
+    <v-navigation-drawer
+        fixed
+        permanent
+        right
+        app
+        
+    >
+        <v-divider></v-divider>
+        <template v-slot:prepend>
+            <right-tree :pydata="{{data}}"></right-tree>
+        </template>
+        <template v-slot:append>
+            <right-bar-banner></right-bar-banner>
+        </template>
+    </v-navigation-drawer>
+</div>

@@ -1,0 +1,7 @@
+<v-navigation-drawer v-model="drawer" fixed permanent :mini-variant.sync="mini" app >
+    {% if user.is_authenticated %}
+        {% include './components/auth/drawerBody.html' %}
+    {% else %}
+        {% include './components/guest/drawerBody.html' %}
+    {% endif %}
+</v-navigation-drawer>

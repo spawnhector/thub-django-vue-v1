@@ -1,0 +1,50 @@
+<transition name="modal">
+    <div id="div-modal-tmpl" class="modal-mask">
+        <div class="modal-wrapper">
+            <div class="">
+                <div class="tray-menu">
+                    <div class="header">
+                        <div class="header__app-name">
+                            <strong>UnAuthenticated User</strong> 
+                        </div>
+                        <div class="header__version"></div>
+                    </div>
+                    <div class="main">
+                        <div class="authenticated-user">
+                            <div class="authenticated-user__avatar">
+                                <img src="https://avatars2.githubusercontent.com/u/786943?v=3&s=460" alt="Casey Zumwalt" />
+                            </div>
+                            <div class="authenticated-user__name">Casey Zumwalt</div>
+                            <div class="authenticated-user__meta">zumwalt</div>
+                        </div>
+                        <div class="content">
+                            <div class="content__header">Content</div>
+                                <div class="content-items">
+                                    <div class="content-item">
+                                        <div class="content-item__icon"></div>
+                                        <div class="content-item__count">262</div>
+                                        <div class="content-item__label">Repositories</div>
+                                    </div>
+                                    <div class="content-item">
+                                        <div class="content-item__icon"></div>
+                                        <div class="content-item__count">31</div>
+                                        <div class="content-item__label">Gists</div>
+                                    </div>
+                                    <div class="content-item">
+                                        <div class="content-item__icon"></div>
+                                        <div class="content-item__count">2</div>
+                                        <div class="content-item__label">Projects</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="actions">
+                            <div class="action action--logout">Login</div>
+                            <div class="action action--sync"  @click="closeModal">Continue as guest</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</transition>

@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/mui-font.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mui-icon.css' %}">
+    <script src="https://bundle.run/css-scroll-snap-polyfill@0.1.2"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js" integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/vuetify.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/modal.css' %}">
+    <link rel="stylesheet" href="{% static 'css/videoPlayer.css' %}">
+    <script src="{% static 'js/react.development.js' %}"></script>
+    <script src="{% static 'js/react-dom.development.js' %}"></script>
+    <script src="{% static 'js/material-ui.development.js' %}"></script>
+    <script src="{% static 'js/babel.min.js' %}"></script>
+    <script src="{% static 'js/vue@2.7.8.js' %}"></script>
+    <script src="{% static 'js/vuetify.js' %}"></script>
+    <script type="module" src="{% static 'js/app.js' %}"></script>
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/x-template" id="modal-tmpl">
+        {% include './components/modal/loginModal.html' %}
+    </script>
+    <div id="app" >
+        <v-app>
+            <login-modal 
+            v-if="modalShow"
+            @closeloginmodal="closeModal"
+            ></login-modal>
+            {% include './drawer.html' %}
+            {% include './navbar.html' %}
+            {% block content %}
+            {% endblock content %}
+            {% include './footer.html' %}
+        </v-app>
+    </div>
+    <script>
+        const init = function(){
+            cssScrollSnapPolyfill()
+        }
+        init();
+    </script>
+</body>
+</html>

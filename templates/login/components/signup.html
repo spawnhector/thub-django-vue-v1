@@ -1,0 +1,23 @@
+<div class="user_forms-signup">
+    <h2 class="forms_title">Sign Up</h2>
+    <form class="forms_form" action="signup/" method="POST">
+        {% csrf_token %}
+        <fieldset class="forms_fieldset">
+            <div class="forms_field">
+                <input name="username" type="text" placeholder="Username" class="forms_field-input" required />
+            </div>
+            <div class="forms_field">
+                <input name="fullName" type="text" placeholder="Full Name" class="forms_field-input" required />
+            </div>
+            <div class="forms_field">
+                <input name="email" type="email" placeholder="Email" class="forms_field-input" required />
+            </div>
+            <div class="forms_field">
+                <input name="password" type="password" placeholder="Password" class="forms_field-input" required />
+            </div>
+        </fieldset>
+        <div class="forms_buttons">
+            <input type="submit" value="Sign up" class="forms_buttons-action">
+        </div>
+    </form>
+</div>

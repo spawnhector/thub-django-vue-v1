@@ -1,0 +1,14 @@
+{% extends 'base/index.html' %}
+{% block content %}
+    <template app>
+        <v-main height="100%">
+            {% comment %} {% include './landingBody.html' %} {% endcomment %}
+            <landing-body 
+            @triggerloginmodal="showModal"
+            user="{{user}}" 
+            :pydata='{{data}}'></landing-body>
+            {% include '../base/components/guest/rightBar.html' %}
+        </v-main>
+    </template>
+{% endblock content %}
+    
