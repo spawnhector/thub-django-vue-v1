@@ -35,8 +35,7 @@ def loginUsers(request):
         
 def logout_request(request):
     logout(request)
-    messages.info(request, "Logged out successfully!")
-    return redirect("/")     
+    return redirect('/')     
 
 def index(request):          
     return render(request, 'login/index.html', {

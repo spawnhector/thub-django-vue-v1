@@ -1,0 +1,87 @@
+<v-tabs-items v-model="currentTabItem">
+        <v-tab-item
+            v-for="tab in pydata.tabItems.concat(pydata.moreTabItems)"
+            :key="tab"
+            :value="'tab_' + tab"
+        >
+            <template>
+                <v-responsive
+                    class="landing-body"
+                >  
+                    <v-list class="slider lighten-3" :class="getClassObject(tab).slider">
+                        <v-list-item
+                            v-for="story in getUserStory(tab)"
+                            :key="story.key"
+                            class="section"
+                        >
+                            <v-responsive
+                            class="pa-2 story-card"
+                            >
+                                <v-lazy
+                                    v-model="story[tab]"
+                                    :options="{
+                                    threshold: 1
+                                    }"
+                                    min-height="200"
+                                    class=" mb-6"
+                                    transition="expand-x-transition"
+                                >
+                                    <v-row
+                                    >
+                                        <v-col
+                                        cols="5"
+                                        md="4"
+                                        xl="3"
+                                        >
+                                            <div class="post">
+                                                <div class="tb">
+                                                    <a href="#" class="td p-p-pic"><img src="https://imagizer.imageshack.com/img923/2452/zifFKH.jpg" alt="Rajeev's profile pic"></a>
+                                                    <div class="td p-r-hdr">
+                                                        <div class="p-u-info">
+                                                        <a href="#">Rajeev Singh</a> shared a memory with <a href="#">Himalaya Singh</a>
+                                                        </div>
+                                                        <div class="p-dt">
+                                                        <i class="material-icons">calendar_today</i>
+                                                        <span>January 28, 2015</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="td p-opt"><i class="material-icons">keyboard_arrow_down</i></div>
+                                                </div>
+                                                <a href="#" class="p-cnt-v">
+                                                    <video-card 
+                                                        @updatecardsdisplayedevent="updateCardsDisplayed" 
+                                                        @triggerloginmodal="triggerloginmodal" 
+                                                        :tab="tab" 
+                                                        :cardsDisplayed="cardsDisplayed" 
+                                                        :story="story" 
+                                                        :cardkey="story.key" 
+                                                        :pydata="pydata" 
+                                                        :user="user"
+                                                    />
+                                                {% comment %} <img src="https://imagizer.imageshack.com/img923/8568/6LwtUa.jpg"> {% endcomment %}
+                                                </a>
+                                                <div>
+                                                    <div class="p-acts">
+                                                        <div class="p-act flex-fix like"><i class="material-icons">thumb_up</i><post-likes :likes="story.data.likes"></post-likes></div>
+                                                        <div class="p-act flex-fix like"><i class="material-icons">thumb_down</i><post-unlikes :unlikes="story.data.unlikes"></post-unlikes></div>
+                                                        <div class="p-act comment"><i class="material-icons">comment</i><span><post-count-comment :comments="story.data.cardComments"></post-count-comment></span></div>
+                                                        <div class="p-act share"><i class="material-icons">reply</i></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </v-col>
+                                        <v-col
+                                        cols="8"
+                                        xl="9"
+                                        >
+                                            <video-card-comment :tab="tab" :story="story"/>
+                                        </v-col>
+                                    </v-row>
+                                </v-lazy>
+                            </v-responsive>
+                        </v-list-item>
+                    </v-list>
+                </v-responsive>
+            </template>
+        </v-tab-item>
+    </v-tabs-items>

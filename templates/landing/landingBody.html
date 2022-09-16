@@ -1,85 +1,31 @@
 <template >
-  <v-container>
-    <template>
-        <v-tabs
-        v-model="currentItem"
-        fixed-tabs
-        slider-color="white"
-        >
-        <v-tab
-            v-for="item in items"
-            :key="item"
-            :href="'#tab-' + item"
-        >
-            {{ item }}
-        </v-tab>
-
-        <v-menu
-            v-if="more.length"
-            bottom
-            left
-        >
-            <template v-slot:activator="{ on, attrs }">
-            <v-btn
-                text
-                class="align-self-center mr-4"
-                v-bind="attrs"
-                v-on="on"
+    <div>
+        <template>
+            <v-tabs
+                v-model="currentTabItem"
+                fixed-tabs
+                slider-color="white"
             >
-                more
-                <v-icon right>
-                mdi-menu-down
-                </v-icon>
-            </v-btn>
-            </template>
-
-            <v-list class="grey lighten-3">
-            <v-list-item
-                v-for="item in more"
-                :key="item"
-                @click="addItem(item)"
-            >
-                {{ item }}
-            </v-list-item>
-            </v-list>
-        </v-menu>
-        </v-tabs>
-    </template>
-    <v-tabs-items v-model="currentItem">
-        <v-tab-item
-            v-for="item in items.concat(more)"
-            :key="item"
-            :value="'tab-' + item"
-        >
-            <v-card flat>
-            <v-card-text>
-                <h2>{{ item }}</h2>
-                {{ text }}
-            </v-card-text>
-            </v-card>
-        </v-tab-item>
-    </v-tabs-items>
-    <v-row justify="space-around">
-        <v-col
-            v-for="rounded in [false, true, 'xl']"
-            :key="rounded"
-            cols="12"
-            md="4"
-        >
-            <v-sheet
-            class="pa-12"
-            color="grey lighten-3"
-            >
-            <div></div>
-            <v-sheet
-                :rounded="rounded"
-                class="mx-auto"
-                height="100"
-                width="100"
-            ></v-sheet>
-            <div></div>
-            </v-sheet>
-        </v-col>
-    </v-row>
-  </v-container>
+                <v-chip :ripple="true">
+                    <v-tab
+                        v-for="item in pydata.tabItems"
+                        :key="item"
+                        :href="'#tab_' + item"
+                        active-class="tab-active"
+                    >
+                        <span v-text="item"></span>
+                    </v-tab>
+                </v-chip>
+                <v-spacer></v-spacer>
+                <v-breadcrumbs :items="breadcrumbs_items">
+                    <template v-slot:divider>
+                        <v-icon>mdi-chevron-right</v-icon>
+                    </template>
+                </v-breadcrumbs>
+                <v-spacer></v-spacer>
+                {% include './components/contentDropDown.html' %}
+            </v-tabs>
+        </template>
+        {% include './components/bodyContent.html' %}
+    </div>
 </template>

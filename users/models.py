@@ -2,7 +2,9 @@ from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
-    
+
+# from post.models import Post
+
 class CustomAccountManager(BaseUserManager):
     def create_superuser(self,email,user_name,full_name,password,**other_fields):
         other_fields.setdefault('is_staff',True)
@@ -32,7 +34,7 @@ class NewUser(AbstractBaseUser,PermissionsMixin):
     about = models.TextField(_('aboout'),max_length=150, blank=True)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False)
-    
+    post = models.ManyToManyField('post.Post')
     objects = CustomAccountManager()
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['user_name','full_name']

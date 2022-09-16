@@ -12,6 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/vuetify.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
     <link rel="stylesheet" href="{% static 'css/modal.css' %}">
     <link rel="stylesheet" href="{% static 'css/videoPlayer.css' %}">
     <script src="{% static 'js/react.development.js' %}"></script>
@@ -21,12 +22,11 @@
     <script src="{% static 'js/vue@2.7.8.js' %}"></script>
     <script src="{% static 'js/vuetify.js' %}"></script>
     <script type="module" src="{% static 'js/app.js' %}"></script>
+    <script type="module" src="{% static 'js/pages/profile.js' %}"></script>
     <title>Document</title>
 </head>
 <body>
-    <script type="text/x-template" id="modal-tmpl">
-        {% include './components/modal/loginModal.html' %}
-    </script>
+    {% include '../vueTemplate/index.html' %}
     <div id="app" >
         <v-app>
             <login-modal 
@@ -34,10 +34,12 @@
             @closeloginmodal="closeModal"
             ></login-modal>
             {% include './drawer.html' %}
-            {% include './navbar.html' %}
+            {% comment %} {% include './navbar.html' %} {% endcomment %}
             {% block content %}
             {% endblock content %}
+            {% if user.is_authenticated != True %}
             {% include './footer.html' %}
+            {% endif %}
         </v-app>
     </div>
     <script>

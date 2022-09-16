@@ -1,0 +1,32 @@
+<v-menu
+        v-if="pydata.moreTabItems.length"
+        bottom
+        left
+    >
+        <template v-slot:activator="{ on, attrs }">
+            <v-chip 
+            :ripple="true"
+            v-bind="attrs"
+            v-on="on"
+            >
+                <div
+                    text
+                    class="align-self-center mr-4"
+                >
+                    More
+                </div>
+                <v-icon right>
+                mdi-menu-down
+                </v-icon>
+            </v-chip>
+        </template>
+        <v-list class="grey lighten-3">
+            <v-list-item
+                v-for="item in pydata.moreTabItems"
+                :key="item"
+                @click="addItem(item)"
+            >
+                <span v-text="item"></span>
+            </v-list-item>
+        </v-list>
+    </v-menu>

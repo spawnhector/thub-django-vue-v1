@@ -19,29 +19,50 @@ export default function StartStoryCard(key,recentCard,data,_this){
             seconds = seconds <= 9 ? `0${seconds}` : seconds;
             return `${mins}:${seconds}`;
         }
+
         function updateProgress() {
             bar.style.width = `${(video.currentTime / video.duration) * 100}%`;
             duration.textContent = `${displayTime(video.currentTime)} : ${displayTime(
                 video.duration
             )}`;
         }
+
         function setProgress(e) {
             const time = e.offsetX / range.offsetWidth; // get percentage where clicked and devide by duration
             bar.style.width = `${time * 100}%`;
             video.currentTime = time * video.duration;
         }
+
         function activateComments() {
             video.pause();
             if (video.pause) {
                 video.style.cursor = "pointer";
             }
         }
+
         function startVideo() {
-            if (video.pause) {
-                video.play();
-                video.style.cursor = "default";
+            if (!_this.activeVideo) {
+                if (video.pause) {
+                    _this.activeVideo = key
+                    video.play();
+                    video.style.cursor = "default";
+                    return
+                }
+            } 
+            if(_this.activeVideo && _this.activeVideo === key) {
+                video.pause();
+                _this.activeVideo = !_this.activeVideo
             }
         }
+        
+        function endVideo(){
+            if(_this.activeVideo && _this.activeVideo === key) {
+                video.pause();
+                _this.activeVideo = !_this.activeVideo
+                console.log(_this.activeVideo)
+            }
+        }
+
         range.addEventListener("click", setProgress);
         video.addEventListener("timeupdate", updateProgress);
         video.addEventListener("canplay", updateProgress);
@@ -76,9 +97,11 @@ export default function StartStoryCard(key,recentCard,data,_this){
         const commentsIcon = document.getElementById(`${key}-comments-icon`);
         const sharesIcon = document.getElementById(`${key}-share-icon`);
         const likesIcon = document.getElementById(`${key}-likes-icon`);
-        likesIcon.addEventListener("click", updateLikes);
-        commentsIcon.addEventListener("click", updateComments);
-        sharesIcon.addEventListener('click', updateShares)
+        if(likesIcon) likesIcon.addEventListener("click", updateLikes);
+        if(commentsIcon) commentsIcon.addEventListener("click", updateComments);
+        if(sharesIcon) sharesIcon.addEventListener('click', updateShares);
+        
+        
     }
 
     if (recentCard) {

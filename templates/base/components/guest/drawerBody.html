@@ -28,8 +28,8 @@
             shift
         >
             <v-btn>
-                <span>{{ data.auth_drawer_sub_mini_items.title }}</span>
-                <v-icon>{{ data.auth_drawer_sub_mini_items.icon }}</v-icon>
+                <span>{{ data.guest_drawer_sub_mini_items.title }}</span>
+                <v-icon>{{ data.guest_drawer_sub_mini_items.icon }}</v-icon>
             </v-btn>
         </v-bottom-navigation>
     </div>
@@ -41,7 +41,11 @@
             shift
         >
             {% for item in data.guest_drawer_sub_items %}
-                <v-btn>
+                <v-btn 
+                    {% if item.title == "SIGNIN" %}
+                        href="{% url 'authIndex' %}"
+                    {% endif %}
+                    >
                     <span>{{item.title}}</span>
                     <v-icon>{{item.icon}}</v-icon>
                 </v-btn>

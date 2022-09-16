@@ -1,0 +1,39 @@
+<transition name="modal">
+    <div id="div-modal-tmpl" class="modal-mask">
+        <div class="modal-wrapper">
+            <div class="">
+                <div class="tray-menu">
+                    <div class="header">
+                        <div class="header__app-name">
+                            <strong>Create New Post</strong> 
+                        </div>
+                        <div class="header__version"></div>
+                    </div>
+                    <form class="forms_form" action="{% url 'makePost' %}"  method="POST"  enctype="multipart/form-data">
+                        <div class="main">
+                            {% comment %} <div class="authenticated-user">
+                                <div class="authenticated-user__avatar">
+                                    <img src="https://avatars2.githubusercontent.com/u/786943?v=3&s=460" alt="Casey Zumwalt" />
+                                </div>
+                                <div class="authenticated-user__name"></div>
+                                <div class="authenticated-user__meta"></div>
+                            </div> {% endcomment %}
+                            <div class="content">
+                                <div class="content__header">Content</div>
+                                    <div class="content-items">
+                                            {% csrf_token %}
+                                            {{form.as_p}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="actions">
+                                <div class="action action--logout">Cancel</div>
+                                <button type="submit" class="action action--sync" >Post</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</transition>

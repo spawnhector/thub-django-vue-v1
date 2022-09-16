@@ -11,6 +11,13 @@ import { VideoCard } from "./components/videoCard.js";
 import { VideoCardComment } from "./components/videoCardComment.js";
 import { LoginModal } from "./components/modal/loginModal.js";
 import { LoginPage } from "./pages/login.js";
+import { UserProfile } from "./pages/profile.js";
+import { VideoCardCommentHeader } from "./components/VideoCardCommentHeader.js";
+import { PostLikes } from "./components/postLikes.js";
+import { PostUnLikes } from "./components/postUnLikes.js";
+import { PostCountComment } from "./components/postCountComment.js";
+import { PostModal } from "./components/modal/postModal.js";
+
 if(document.getElementById('app')){
     Vue.component("Navbar", Navbar);
     Vue.component("thubmain", Main);
@@ -18,11 +25,17 @@ if(document.getElementById('app')){
     Vue.component("main-loader", MainLoader);
     Vue.component("video-card", VideoCard);
     Vue.component("video-card-comment", VideoCardComment);
+    Vue.component("video-card-comment-subheader", VideoCardCommentHeader);
     Vue.component("right-bar-banner", RightBarBanner);
     Vue.component("right-tree", RightBarTreeView);
     Vue.component("landing-body", LandingBody);
-    Vue.component("react", ReactVueWrapper());
     Vue.component("login-modal", LoginModal);
+    Vue.component("user-profile", UserProfile);
+    Vue.component("post-likes", PostLikes);
+    Vue.component("post-unlikes", PostUnLikes);
+    Vue.component("post-count-comment", PostCountComment);
+    Vue.component("create-post-modal", PostModal);
+    Vue.component("react", ReactVueWrapper());
     var app = new Vue({
         el: "#app",
         vuetify: new Vuetify(),
@@ -63,7 +76,6 @@ if(document.getElementById('app')){
 }
 
 if (document.getElementById('login')) {
-    
     Vue.component("app-login", LoginPage);
     var login = new Vue({
         el: "#login",
@@ -82,3 +94,21 @@ if (document.getElementById('login')) {
         }
     });
 }
+// if (document.getElementById('user-profile')) {
+//     var login = new Vue({
+//         el: "#user-profile",
+//         vuetify: new Vuetify(),
+//         data() {
+//             return {
+//             };
+//         },
+//         computed: {
+//         },
+//         beforeDestroy () {
+//         },
+//         methods: {
+//         },
+//         mounted(){
+//         }
+//     });
+// }

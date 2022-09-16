@@ -85,7 +85,7 @@ h1 {
 .slider {
     -webkit-overflow-scrolling: touch;
     scroll-snap-type: y mandatory;
-    max-height: 82vh;
+    max-height: 100vh;
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
@@ -95,13 +95,44 @@ h1 {
 
 .section {
     scroll-snap-align: center;
-    min-height: 91vh;
+    min-height: 100vh;
+    background-color: rgb(240, 243, 248);
     display: flex;
     justify-content: center;
     width: 100%;
     overflow: hidden;
 }
 
+.seperate {
+    width: 3px;
+    height: 3px;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 50%;
+    background-color: rgb(240, 243, 248);
+    margin: 0 6px;
+}
+
+.seperate-lg {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 50%;
+    background-color: rgb(240, 243, 248);
+    margin: 0 6px;
+}
+
+.divider {
+    height: 25px;
+}
+
+.comment-subheader {}
+
+.flex-fix {
+    display: flex;
+    align-items: center;
+}
 
 .overlay {
     display: none;
@@ -121,17 +152,17 @@ h1 {
 
 @media(min-width:600px) {
     .landing-body {
-        height: 490px
+        /* height: 100vh */
     }
 
     .story-card {
-        height: 80vh
+        /* height: 80vh */
     }
 }
 
 @media(min-width: 1000px) and (min-height: 900px) {
     .landing-body {
-        height: 800px
+        /* height: 800px */
     }
 
     .right-tree-scroll {
@@ -145,7 +176,7 @@ h1 {
 
 @media(max-width: 1000px) and (min-height: 900px) {
     .landing-body {
-        height: 800px
+        /* height: 800px */
     }
 
     .right-tree-scroll {
