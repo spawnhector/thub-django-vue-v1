@@ -4,7 +4,8 @@ export const UserProfile = {
     props: ['pydata'],
     data() {
         return {
-            showCreatePostModal: false
+            showCreatePostModal: false,
+            expandComment: false
         };
     },
     components:{
@@ -16,6 +17,16 @@ export const UserProfile = {
         },
         removeStyle(ele){
             ele.classList.remove("scrolling")
+        },
+        closePostModal(){
+            this.showCreatePostModal = false
+        },
+        toggleComments(id){
+            if (this.expandComment == id) {
+                this.expandComment = false;
+            } else {
+                this.expandComment = id;
+            }
         }
     },
     mounted(){

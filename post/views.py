@@ -5,14 +5,6 @@ from post.models import Post
 from django.http import HttpResponse,HttpResponseRedirect
 from django.urls import reverse
 from django.contrib import messages
-
-class MakePostClass(View):
-    def get(self, request):
-        return HttpResponse('make post')
-    
-    def post(self, request):
-        return HttpResponseRedirect(reverse('profile'))
-    
     
 def make_post(request):
     if request.method == 'POST':
@@ -20,7 +12,8 @@ def make_post(request):
         if form.is_valid():
             title = form.cleaned_data['title']
             body = form.cleaned_data['body']
-            Post.objects.create_post(title,body, user=request.user)
+            post_type = request.POST['post_type']
+            Post.objects.create_post(user=request.user,title=title,body=body,post_type=post_type)
             messages.success(request, 'Post Created.')
             return HttpResponseRedirect(reverse('profile'))
     return HttpResponseRedirect(reverse('profile'))

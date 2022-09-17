@@ -10,24 +10,38 @@
                         <div class="header__version"></div>
                     </div>
                     <form class="forms_form" action="{% url 'makePost' %}"  method="POST"  enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input hidden name="post_type" value="text"/>
                         <div class="main">
-                            {% comment %} <div class="authenticated-user">
-                                <div class="authenticated-user__avatar">
-                                    <img src="https://avatars2.githubusercontent.com/u/786943?v=3&s=460" alt="Casey Zumwalt" />
-                                </div>
-                                <div class="authenticated-user__name"></div>
-                                <div class="authenticated-user__meta"></div>
-                            </div> {% endcomment %}
                             <div class="content">
-                                <div class="content__header">Content</div>
-                                    <div class="content-items">
-                                            {% csrf_token %}
-                                            {{form.as_p}}
+                                <div class="content__header">
+                                    <div class="tb" id="c-tabs">
+                                        <div class="td active"><i class="material-icons">subject</i><span>Make Post</span></div>
+                                        <div class="td"><i class="material-icons">camera_enhance</i><span>Photo/Video</span></div>
+                                        <div class="td"><i class="material-icons">videocam</i><span>Live Video</span></div>
+                                        <div class="td"><i class="material-icons">event</i><span>Life Event</span></div>
                                     </div>
+                                </div>
+                                <div class="authenticated-user">
+                                    <div class="authenticated-user__avatar">
+                                        <img src="https://avatars2.githubusercontent.com/u/786943?v=3&s=460" alt="Casey Zumwalt" />
+                                    </div>
+                                    <div class="authenticated-user__name"></div>
+                                    <div class="authenticated-user__meta"></div>
+                                </div>
+                                <div class="content-items">
+                                    {% for field in form %}
+                                        <div class="fieldWrapper">
+                                            {{ field.label_tag }} 
+                                            {{ field }}
+                                            <span class="focus-border"></span>
+                                            {{ field.errors }}
+                                        </div>
+                                    {% endfor %}
                                 </div>
                             </div>
                             <div class="actions">
-                                <div class="action action--logout">Cancel</div>
+                                <div class="action action--logout" @click="closeModal">Cancel</div>
                                 <button type="submit" class="action action--sync" >Post</button>
                             </div>
                         </div>
@@ -35,5 +49,6 @@
                 </div>
             </div>
         </div>
+        
     </div>
 </transition>

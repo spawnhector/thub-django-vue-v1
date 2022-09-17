@@ -22,5 +22,7 @@ urlpatterns = [
     path('profile/', include("userprofile.urls")),
     path('post/', include("post.urls")),
     path('likes/', include("likes.urls")),
+    path('comments/', include("comments.urls")),
+    path('comments_reply/', include("comments_reply.urls")),
     path('admin/', admin.site.urls),
 ]

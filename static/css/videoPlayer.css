@@ -193,6 +193,7 @@
 
 .comments-list {
     display: flex;
+    padding-left: 44px !important;
     flex-direction: column;
 }
 

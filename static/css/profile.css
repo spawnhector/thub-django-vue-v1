@@ -785,6 +785,16 @@ header {
     margin-bottom: 7px;
 }
 
+.p-u-head {
+    color: #5a5959;
+    font-size: 14px;
+    margin-bottom: 7px;
+}
+
+.fs-17 {
+    font-size: 17px;
+}
+
 .p-u-info a {
     color: #4267b2;
 }
