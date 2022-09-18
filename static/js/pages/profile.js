@@ -5,7 +5,8 @@ export const UserProfile = {
     data() {
         return {
             showCreatePostModal: false,
-            expandComment: false
+            expandComment: false,
+            expandReply: false,
         };
     },
     components:{
@@ -14,8 +15,10 @@ export const UserProfile = {
     methods: {
         addStyle(ele){
             ele.classList.add("scrolling")
+            // document.getElementById('p-tabs').classList.remove('animate')
         },
         removeStyle(ele){
+            // document.getElementById('p-tabs').classList.add('animate')
             ele.classList.remove("scrolling")
         },
         closePostModal(){
@@ -26,6 +29,13 @@ export const UserProfile = {
                 this.expandComment = false;
             } else {
                 this.expandComment = id;
+            }
+        },
+        toggleReplies(id){
+            if (this.expandReply == id) {
+                this.expandReply = false;
+            } else {
+                this.expandReply = id;
             }
         }
     },

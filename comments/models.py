@@ -15,4 +15,6 @@ class Comments(models.Model):
     replies = models.ManyToManyField('comments_reply.CommentReply')
     objects = CommentManager()
     date = models.DateTimeField(auto_now_add=True)
+    class Meta:
+        ordering = ['-date']
     

@@ -3,6 +3,8 @@
     height: 100vh;
 }
 
+.scrolling {}
+
 .tb {
     display: table;
     width: 100%;
@@ -37,6 +39,7 @@ button {
     box-shadow: 0px 8px 30px #1d2d4f;
     border-radius: 4px;
     /* overflow: hidden; */
+    overflow-x: hidden;
 }
 
 #device-bar-1 {
@@ -198,6 +201,45 @@ header {
     z-index: 3;
 }
 
+.animate-tab {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-transition: -webkit-transform 420ms cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: -webkit-transform 420ms cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: transform 420ms cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: transform 420ms cubic-bezier(0.165, 0.84, 0.44, 1), -webkit-transform 420ms cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.animate-profile-pic {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-transition: -webkit-transform 420ms cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: -webkit-transform 420ms cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: transform 420ms cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: transform 420ms cubic-bezier(0.165, 0.84, 0.44, 1), -webkit-transform 420ms cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.animate-info-tab {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-transition: -webkit-transform 420ms cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: -webkit-transform 420ms cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: transform 420ms cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: transform 420ms cubic-bezier(0.165, 0.84, 0.44, 1), -webkit-transform 420ms cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.scrolling .animate-tab {
+    transform: translate3d(0, -70px, 0);
+}
+
+.scrolling .animate-profile-pic {
+    transform: translate3d(-280px, 0, 0);
+}
+
+.scrolling .animate-info-tab {
+    transform: translate3d(575px, 0, 0);
+}
+
 /* scrolling */
 .scrolling #profile-upper {
     opacity: 0;
@@ -207,7 +249,7 @@ header {
 .scrolling #p-tabs {
     position: fixed;
     width: 100%;
-    top: 64px;
+    top: 134px;
     left: 0;
     font-size: 13px;
     color: #919191;
@@ -268,7 +310,7 @@ header {
 #m-btns {
     position: absolute;
     right: 56px;
-    bottom: 20px;
+    bottom: 52px;
     width: 500px;
 }
 
@@ -300,7 +342,7 @@ header {
 #edit-profile {
     position: absolute;
     right: 20px;
-    bottom: 21px;
+    bottom: 66px;
     line-height: 1;
     cursor: pointer;
 }
@@ -754,6 +796,7 @@ header {
 
 .post {
     padding: 20px;
+    max-width: 740px;
     margin: 30px;
     border-radius: 10px;
     background-color: #fff;

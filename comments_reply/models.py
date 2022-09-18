@@ -14,3 +14,5 @@ class CommentReply(models.Model):
     message = models.TextField()
     objects = ReplyManager()
     date = models.DateTimeField(auto_now_add=True)
+    class Meta:
+        ordering = ['-date']

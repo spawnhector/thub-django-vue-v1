@@ -10,25 +10,29 @@
                             <div class="comment-head">
                                 <h6 class="comment-name {% if post.user.id == comment.user.id %}by-author{% endif %}"><a href="http://creaticode.com/blog">{{comment.user.user_name}}</a></h6>
                                 <span>{{comment.date}}</span>
-                                <v-icon>mdi-reply</v-icon>
+                                <i><v-icon @click="toggleReplies({{comment.id}})">mdi-reply</v-icon></i>
                                 <v-icon>mdi-heart-plus-outline</v-icon>
                             </div>
                             <div class="comment-content">
                                 {{comment.message}}
-                                <form class="forms_form" action="{% url 'makeCommentReply' %}"  method="POST">
-                                    {% csrf_token %}
-                                    <input hidden name="comment_id" value="{{comment.id}}"/>
-                                    <div class="content-items">
-                                        {% for field in commentReplyForm %}
-                                            <div class="fieldWrapper post-comment flex-fix mt-6">
-                                                {{ field }}
-                                                <v-btn type="submit">reply</v-btn>
-                                                <span class="focus-border focus-border-fix"></span>
-                                                {{ field.errors }}
+                                <v-expand-transition>
+                                    <div v-show="expandReply == {{comment.id}}">
+                                        <form class="forms_form" action="{% url 'makeCommentReply' %}"  method="POST">
+                                            {% csrf_token %}
+                                            <input hidden name="comment_id" value="{{comment.id}}"/>
+                                            <div class="content-items">
+                                                {% for field in commentReplyForm %}
+                                                    <div class="fieldWrapper post-comment flex-fix mt-6">
+                                                        {{ field }}
+                                                        <v-btn type="submit">reply</v-btn>
+                                                        <span class="focus-border focus-border-fix"></span>
+                                                        {{ field.errors }}
+                                                    </div>
+                                                {% endfor %}
                                             </div>
-                                        {% endfor %}
+                                        </form>
                                     </div>
-                                </form>
+                                </v-expand-transition>
                             </div>
                         </div>
                     </div>

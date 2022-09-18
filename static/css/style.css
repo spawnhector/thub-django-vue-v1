@@ -259,7 +259,7 @@ body {
  =======================*/
 .comments-container {
     /* margin: 60px auto 15px; */
-    width: 768px;
+    max-width: 740px;
 }
 
 .comments-container h1 {
@@ -382,7 +382,7 @@ body {
  * Caja del Comentario
  ---------------------------*/
 .comments-list .comment-box {
-    width: 640px;
+    width: 570px;
     float: right;
     position: relative;
     -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
@@ -411,7 +411,7 @@ body {
 }
 
 .reply-list .comment-box {
-    width: 610px;
+    width: 540px;
 }
 
 .comment-box .comment-head {
