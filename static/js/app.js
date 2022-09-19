@@ -17,6 +17,10 @@ import { PostLikes } from "./components/postLikes.js";
 import { PostUnLikes } from "./components/postUnLikes.js";
 import { PostCountComment } from "./components/postCountComment.js";
 import { PostModal } from "./components/modal/postModal.js";
+import { ProfileAvatar } from "./components/profileAvatar.js";
+import { ProfilePresence } from "./components/profilePresence.js";
+import { ProfileTooltip } from "./components/profileTooltip.js";
+import { CommentAvatar } from "./components/comment_avatar.js";
 
 if(document.getElementById('app')){
     Vue.component("Navbar", Navbar);
@@ -35,6 +39,10 @@ if(document.getElementById('app')){
     Vue.component("post-unlikes", PostUnLikes);
     Vue.component("post-count-comment", PostCountComment);
     Vue.component("create-post-modal", PostModal);
+    Vue.component("profile-avatar", ProfileAvatar);
+    Vue.component("profile-presence", ProfilePresence);
+    Vue.component("profile-tooltip", ProfileTooltip);
+    Vue.component("comment-avatar", CommentAvatar);
     Vue.component("react", ReactVueWrapper());
     var app = new Vue({
         el: "#app",

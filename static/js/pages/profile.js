@@ -1,7 +1,4 @@
 
-import { ProfileAvatar } from "../components/profileAvatar.js";
-import { ProfilePresence } from "../components/profilePresence.js";
-import { ProfileTooltip } from "../components/profileTooltip.js";
 export const UserProfile = {
     template: '#user-profile',
     props: ['pydata'],
@@ -139,9 +136,6 @@ export const UserProfile = {
         };
     },
     components:{
-        ProfileAvatar,
-        ProfilePresence,
-        ProfileTooltip
     },
     methods: {
         addStyle(ele){
@@ -168,6 +162,10 @@ export const UserProfile = {
             } else {
                 this.expandReply = id;
             }
+        },
+        postHasComments(comment){
+            console.log(comment)
+            return false
         }
     },
     mounted(){

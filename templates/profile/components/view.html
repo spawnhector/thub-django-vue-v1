@@ -1,3 +1,4 @@
+{% load profile_tags %}
 <div id="profile-body" class="not_scrolling">
     <create-post-modal @closepostmodal="closePostModal" v-if="showCreatePostModal"></create-post-modal>
     {% if messages %}
@@ -159,64 +160,7 @@
                                             <i class="material-icons">comment</i>
                                             <span>{{post.comments.all.count}}</span>
                                         </div>
-                                            <div
-                                                v-if="avatarsStackedLimited && avatarsStackedLimited.length > 0"
-                                                width="320"
-                                            >
-                                                <section class="avatars-group pa-3 stacked">
-                                                     <div v-for="avatar in avatarsStackedLimited" :key="`avatar-id-${avatar.id}`" class="avatars-group__item">
-                                                     <v-tooltip bottom>
-                                                        <template v-slot:activator="{ on, attrs }">
-                                                            <span
-                                                                v-bind="attrs"
-                                                                v-on="on"
-                                                            >
-                                                                <profile-avatar 
-                                                                    :avatar="avatar" slot="activator"
-                                                                >
-                                                                    <profile-presence v-if="presence" :presence="avatar.presence"></profile-presence>
-                                                                </profile-avatar>
-                                                            </span>
-                                                        </template>
-                                                        <profile-tooltip :avatar="avatar" :presence="presence"></profile-tooltip>
-                                                    </v-tooltip>
-                                                    </div>
-                                                    <div class="avatars-group__item more">
-                                                        <v-avatar color="primary" size="40px">
-                                                            <v-menu
-                                                                v-model="stackedMenu"
-                                                                left
-                                                                :max-height="menuMaxHeight"
-                                                                nudge-bottom="8"
-                                                                offset-y
-                                                            >
-                                                                <template v-slot:activator="{ on }">
-                                                                    <v-btn icon v-on="on">
-                                                                        <v-icon :color="$vuetify.theme.dark ? 'grey darken-2' : 'white'">more_horiz</v-icon>
-                                                                    </v-btn>
-                                                                </template>
-                                                                <v-list dense two-line>
-                                                                <v-list-tile
-                                                                    v-for="avatar in avatarsSorted"
-                                                                    :key="`avatar-menu-id-${avatar.id}`"
-                                                                    avatar
-                                                                >
-                                                                    <v-list-tile-avatar>
-                                                                    <profile-avatar :avatar="avatar" custom-class="bordered small" size="32px">
-                                                                        <profile-presence v-if="presence" :presence="avatar.presence"></profile-presence>
-                                                                    </profile-avatar>
-                                                                    </v-list-tile-avatar>
-                                                                    <v-list-tile-content>
-                                                                    <v-list-tile-title>{{ avatar.alt }}</v-list-tile-title>
-                                                                    <v-list-tile-sub-title>{{ avatar.role }}</v-list-tile-sub-title>
-                                                                    </v-list-tile-content>
-                                                                </v-list-tile>
-                                                                </v-list>
-                                                            </v-menu>
-                                                        </v-avatar>
-                                                    </div>
-                                                </section>
-                                            </div>
+                                        <comment-avatar comments="{% to_json post.comments.all.values %}"/>
                                         <div class="p-act share"><i class="material-icons">reply</i></div>
                                     </div>
                                 </div>
