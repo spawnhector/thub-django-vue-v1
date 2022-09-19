@@ -7,7 +7,7 @@ export const CommentAvatar = {
             darkMode: true,
             menuMaxHeight: `${(60 * 5) + 4}px`,
             presence: false,
-            stackedLimit: 6,
+            stackedLimit: 3,
             stackedMenu: false
         };
     },
@@ -19,9 +19,10 @@ export const CommentAvatar = {
                     return {
                         alt: comment.user.full_name,
                         id: comment.id,
-                        presence: 'Online',
+                        presence: false,
                         role: comment.user.username,
-                        src: comment.user.avatar
+                        src: comment.user.avatar,
+                        user_id: comment.user.id
                     }
                 });
             }
@@ -29,9 +30,37 @@ export const CommentAvatar = {
                 ? this.avatars.sort((a, b) => a.alt.localeCompare(b.alt))
                 : null
         },
+        avatarsOrganized(){
+            let sort = this.avatarsSorted
+            let organized = [];
+            sort.map((a)=>{
+                let check = sort.filter(b =>{
+                    return a.user_id == b.user_id
+                })
+                if(check.length > 1){
+                    organized.push({
+                        ...a,
+                        organized: check.length
+                    })
+                    sort = sort.filter(c=>{
+                        return c.user_id != a.user_id
+                    })
+                }
+                if(check.length == 1){
+                    organized.push({
+                        ...a
+                    })
+                    sort = sort.filter(c=>{
+                        return c.user_id != a.user_id
+                    })
+                }
+            });
+            return organized;
+        },
         avatarsStackedLimited () {
-            return (this.avatarsSorted && this.avatarsSorted.length > 0)
-                ? this.avatarsSorted.slice(0, this.stackedLimit)
+            let sort = this.avatarsOrganized
+            return (sort && sort.length > 0)
+                ? sort.slice(0, this.stackedLimit)
                 : null
         }
     },

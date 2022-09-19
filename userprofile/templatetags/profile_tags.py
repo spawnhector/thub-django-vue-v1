@@ -18,6 +18,7 @@ def to_json(obj):
             'id': comments['id'],
             'message': comments['message'],
             'user': {
+                'id': user.id,
                 'full_name': user.full_name,
                 'username': user.user_name,
                 'avatar': 'https://randomuser.me/api/portraits/med/men/19.jpg'

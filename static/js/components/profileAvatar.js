@@ -1,3 +1,41 @@
+const withBadge = `
+    <v-badge
+        color="green"
+        :content="avatar.organized"
+        bottom
+        offset-x="20"
+        offset-y="17"
+    >
+        <v-avatar :class="(customClass) ? customClass : ''" :color="(!avatar.src) ? GetColour(avatar.alt) : null" :size="size">
+            <slot></slot>
+            <img
+                v-if="avatar.src"
+                :src="avatar.src"
+                :alt="avatar.alt"
+            >
+            <span
+                v-else
+                class="white--text"
+            >
+                {{ GetInitials(avatar.alt) }}
+            </span>
+        </v-avatar>
+    </v-badge>`;
+const withOutBadge = `
+    <v-avatar :class="(customClass) ? customClass : ''" :color="(!avatar.src) ? GetColour(avatar.alt) : null" :size="size">
+        <slot></slot>
+        <img
+            v-if="avatar.src"
+            :src="avatar.src"
+            :alt="avatar.alt"
+        >
+        <span
+            v-else
+            class="white--text"
+        >
+            {{ GetInitials(avatar.alt) }}
+        </span>
+    </v-avatar>`;
 export const ProfileAvatar = {
   props: {
     avatar: {
@@ -14,20 +52,12 @@ export const ProfileAvatar = {
     }
   },
   template: `
-    <v-avatar :class="(customClass) ? customClass : ''" :color="(!avatar.src) ? GetColour(avatar.alt) : null" :size="size">
-      <slot></slot>
-      <img
-        v-if="avatar.src"
-        :src="avatar.src"
-        :alt="avatar.alt"
-      >
-      <span
-        v-else
-        class="white--text"
-      >
-        {{ GetInitials(avatar.alt) }}
-      </span>
-    </v-avatar>
+    <div v-if="avatar.organized">
+        ${withBadge}
+    </div>
+    <div v-else>
+        ${withOutBadge}
+    </div>
   `,
   methods: {
     GetColour (name) {
@@ -54,5 +84,8 @@ export const ProfileAvatar = {
       }
       return initials
     }
+  },
+  mounted(){
+    console.log(this.avatar)
   }
 }
