@@ -151,7 +151,7 @@
                                                 {% csrf_token %}
                                                 <input hidden name="post_id" value="{{post.id}}"/>
                                                 <button type="submit" class="flex-fix">
-                                                    <i class="material-icons">thumb_up_alt</i>
+                                                    <i class="material-icons {% postAlreadyLiked likes=post.likes user=user%}" >thumb_up_alt</i>
                                                     <span>{{post.likes.all.count}}</span>
                                                 </button>
                                             </form>

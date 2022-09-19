@@ -174,15 +174,10 @@ export const UserProfile = {
             let profileMAin = document.getElementById('profile-main')
             let profileBody = document.getElementById('profile-body')
             profileMAin.onscroll = function(event){
-                if (event.target.scrollTop >= 200) {
-                    _this.addStyle(profileBody)
-                }
-                if (event.target.scrollTop < 200) {
-                    // console.log(event.target.scrollTop )
-                    _this.removeStyle(profileBody)
-                }
+                if (event.target.scrollTop > 200) _this.addStyle(profileBody);
+                if (event.target.scrollTop < 180) _this.removeStyle(profileBody);
             }
-            let postModalTrigger = document.querySelector('.post-modal-trigger')
+            let postModalTrigger = document.querySelector('.post-modal-trigger');
             postModalTrigger.addEventListener('click', function(){
                 _this.showCreatePostModal = true
             })

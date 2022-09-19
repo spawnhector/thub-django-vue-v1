@@ -25,3 +25,9 @@ def to_json(obj):
         })
     data = list(newList)
     return json.dumps(data, indent=4, sort_keys=True, default=str)
+
+@register.simple_tag
+def postAlreadyLiked(likes,user):
+    if likes.filter(user=user).exists():
+        return 'liked'
+    return

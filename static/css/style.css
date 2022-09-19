@@ -436,7 +436,23 @@ body {
     transition: color 0.3s ease;
 }
 
+i {
+    color: #A6A6A6;
+    cursor: pointer;
+    -webkit-transition: color 0.3s ease;
+    -o-transition: color 0.3s ease;
+    transition: color 0.3s ease;
+}
+
 .comment-box .comment-head i:hover {
+    color: #03658c;
+}
+
+i:hover {
+    color: #03658c;
+}
+
+.liked {
     color: #03658c;
 }
 

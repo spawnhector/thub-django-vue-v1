@@ -878,6 +878,7 @@ header {
     position: relative;
     align-items: center;
     bottom: -17px;
+    height: 45px;
 }
 
 .p-act {
@@ -915,7 +916,8 @@ header {
 }
 
 .share {
-    float: right;
+    position: absolute;
+    right: 0;
     transform: rotateY(180deg);
     margin-right: -1px;
 }
