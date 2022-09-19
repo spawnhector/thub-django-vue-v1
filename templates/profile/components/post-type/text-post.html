@@ -6,15 +6,52 @@
         </div>
         <div class="p-dt">
             <i class="material-icons">calendar_today</i>
-            <span>{{post.date}}</span>
+            <span>
+                {{post.date}}
+            </span>
+            <v-chip
+                color="primary"
+                outlined
+                pill
+                small
+            >
+                {{post.category}}
+            </v-chip>
         </div>
         <div class="p-u-head">
             <span>{{post.title}}</span>
         </div>
     </div>
-    {% comment %} <div class="td p-opt">
-        <i class="material-icons">keyboard_arrow_down</i>
-    </div> {% endcomment %}
+     <div class="td p-opt">
+        <v-menu
+            bottom
+            left
+            transition="scale-transition"
+        >
+            <template v-slot:activator="{ on: menu, attrs }">
+                <v-tooltip bottom>
+                    <template v-slot:activator="{ on: tooltip }">
+                        <v-btn
+                        icon
+                        v-bind="attrs"
+                        v-on="{ ...tooltip, ...menu }"
+                        >
+                            <v-icon>mdi-dots-vertical</v-icon>
+                        </v-btn>
+                    </template>
+                    <span>Im A ToolTip</span>
+                </v-tooltip>
+            </template>
+            <v-list>
+                <v-list-item
+                    {% comment %} v-for="(item, i) in items" {% endcomment %}
+                    {% comment %} :key="i" {% endcomment %}
+                >
+                    <v-list-item-title>one</v-list-item-title>
+                </v-list-item>
+            </v-list>
+          </v-menu>
+    </div>
 </div>
 {% comment %} <div class="p-cnt-v"> {% endcomment %}
 <div class="tb fs-17">

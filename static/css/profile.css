@@ -852,9 +852,13 @@ header {
     margin-right: 2px;
 }
 
-.p-dt span {
+.p-dt material-icons {
     position: relative;
     top: -2px;
+}
+
+.p-dt .v-chip {
+    margin-left: 10px;
 }
 
 .p-opt {
@@ -896,14 +900,13 @@ header {
     color: #a3a6aa;
 }
 
-.like {
-    margin-right: 36px;
-}
+.like {}
 
 .like,
 .comment {
     width: 50px;
     float: left;
+    margin-right: 13px;
 }
 
 .p-act i {

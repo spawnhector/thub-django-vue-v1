@@ -160,7 +160,7 @@
                                             <i class="material-icons">comment</i>
                                             <span>{{post.comments.all.count}}</span>
                                         </div>
-                                        <comment-avatar comments="{% to_json post.comments.all.values %}"/>
+                                        <comment-avatar comments="{% to_json obj=post.comments.all.values model=True %}"/>
                                         <div class="p-act share"><i class="material-icons">reply</i></div>
                                     </div>
                                 </div>

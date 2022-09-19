@@ -1,3 +1,4 @@
+{% load profile_tags %}
 <transition name="modal">
     <div id="div-modal-tmpl" class="modal-mask">
         <div class="modal-wrapper">
@@ -12,6 +13,7 @@
                     <form class="forms_form" action="{% url 'makePost' %}"  method="POST"  enctype="multipart/form-data">
                         {% csrf_token %}
                         <input hidden name="post_type" value="text"/>
+                        <input hidden id="post_category_id" name="post_category" value=""/>
                         <div class="main">
                             <div class="content">
                                 <div class="content__header">
@@ -28,6 +30,7 @@
                                     </div>
                                     <div class="authenticated-user__name"></div>
                                     <div class="authenticated-user__meta"></div>
+                                    <chip-group tags="{% to_json obj=data.tabItems model=False %}" moreTags="{% to_json obj=data.moreTabItems model=False %}"></chip-group>
                                 </div>
                                 <div class="content-items">
                                     {% for field in form %}

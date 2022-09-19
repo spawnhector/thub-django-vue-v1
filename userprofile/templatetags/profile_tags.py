@@ -8,8 +8,7 @@ register = template.Library()
 def current_time(format_string):
     return datetime.datetime.now().strftime(format_string)
 
-@register.simple_tag
-def to_json(obj):
+def getModelData(obj):
     newList = []
     for comments in list(obj):
         user = NewUser.objects.get(id=comments['user_id'])
@@ -24,7 +23,15 @@ def to_json(obj):
                 'avatar': 'https://randomuser.me/api/portraits/med/men/19.jpg'
             }
         })
-    data = list(newList)
+    return newList
+
+@register.simple_tag
+def to_json(obj,model):
+    if model == True:
+        data = list(getModelData(obj=obj))
+    if model == False:
+        data = list(obj)
+        
     return json.dumps(data, indent=4, sort_keys=True, default=str)
 
 @register.simple_tag

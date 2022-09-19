@@ -456,6 +456,10 @@ i:hover {
     color: #03658c;
 }
 
+.theme--light.v-icon {
+    color: white;
+}
+
 .comment-box .comment-name {
     color: #283035;
     font-size: 14px;
@@ -523,4 +527,8 @@ i:hover {
 
 .post-comment textarea {
     margin-right: 20px;
+}
+
+.theme--dark.v-btn.v-btn--icon {
+    color: #A6A6A6;
 }

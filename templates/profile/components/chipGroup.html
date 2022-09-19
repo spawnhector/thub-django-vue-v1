@@ -1,0 +1,27 @@
+<template>
+    <v-row justify="space-around">
+        <v-col
+            cols="12"
+            sm="10"
+            md="12"
+        >
+        <div
+            class="px-1"
+        >
+            <v-chip-group
+                v-model="postCategory"
+                mandatory
+                active-class="primary--text"
+            >
+                <v-chip
+                    filter
+                    v-for="(tag,index) in allTags"
+                    :key="index"
+                >
+                    <span v-text="tag"></span>
+                </v-chip>
+            </v-chip-group>
+        </div>
+        </v-col>
+    </v-row>
+</template>

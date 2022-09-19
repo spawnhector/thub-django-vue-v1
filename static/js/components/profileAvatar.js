@@ -86,6 +86,6 @@ export const ProfileAvatar = {
     }
   },
   mounted(){
-    console.log(this.avatar)
+    // console.log(this.avatar)
   }
 }
