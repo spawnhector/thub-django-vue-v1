@@ -4,11 +4,11 @@ import string
 
 def tempData():
     tabItems = [
-        'Trending', 'Shopping', 'Videos', 'Blogs','IOT',
+        'Trending', 'Events', 'Videos', 'Blogs','Live Stream',
     ]
     
     moreTabItems = [
-        'News', 'Maps', 'Books', 'Flights', 'Apps',
+        'News', 'Maps', 'Books', 'Flights', 'Apps','Shopping','IOT',
     ]
     
     def cardComment(key):

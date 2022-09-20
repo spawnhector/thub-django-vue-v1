@@ -129,8 +129,25 @@
    .tray-menu .content__header {
        font-size: 0.8125rem;
        opacity: 0.6;
-       padding: 13px;
+       padding: 0;
        background-color: #fff;
+   }
+
+   .tray-menu .content__header .v-tabs-bar {
+       /* border-radius: inherit;
+       height: 57px;
+       border-bottom: solid 1px gainsboro; */
+       padding: 0px;
+   }
+
+   .tab-content {
+       background-color: #fff0 !important;
+   }
+
+   .tab-content-body {
+       opacity: 0.6;
+       color: black;
+       background-color: #fff !important;
    }
 
    .tray-menu .content-items {

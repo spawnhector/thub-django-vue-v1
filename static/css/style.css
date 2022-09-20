@@ -456,7 +456,7 @@ i:hover {
     color: #03658c;
 }
 
-.theme--light.v-icon {
+.v-chip-group .theme--light.v-icon {
     color: white;
 }
 

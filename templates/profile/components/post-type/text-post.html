@@ -1,3 +1,4 @@
+{% load profile_tags %}
 <div class="tb">
     <a href="#" class="td p-p-pic"><img src="https://imagizer.imageshack.com/img923/2452/zifFKH.jpg" alt="Rajeev's profile pic"></a>
     <div class="td p-r-hdr">
@@ -24,6 +25,8 @@
     </div>
      <div class="td p-opt">
         <v-menu
+            :nudge-width="100"
+            offset-x
             bottom
             left
             transition="scale-transition"
@@ -39,18 +42,11 @@
                             <v-icon>mdi-dots-vertical</v-icon>
                         </v-btn>
                     </template>
-                    <span>Im A ToolTip</span>
+                    <span>more</span>
                 </v-tooltip>
             </template>
-            <v-list>
-                <v-list-item
-                    {% comment %} v-for="(item, i) in items" {% endcomment %}
-                    {% comment %} :key="i" {% endcomment %}
-                >
-                    <v-list-item-title>one</v-list-item-title>
-                </v-list-item>
-            </v-list>
-          </v-menu>
+            <post-menu username="{{post.user.user_name}}"></post-menu>
+        </v-menu>
     </div>
 </div>
 {% comment %} <div class="p-cnt-v"> {% endcomment %}
