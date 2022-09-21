@@ -22,8 +22,9 @@ export const TextPostForm = {
                     :rules="bodyRules"
                     :counter="counter"
                     clearable
-                     dense
-                     label="Post Content"
+                    dense
+                    label="Post Content"
+                    id="text-post-body"
                 ></v-textarea>
             </div>
         </div>
@@ -35,6 +36,7 @@ export const TextPostForm = {
             body: ''
         })
         return {
+            originInputSize: false,
             form: Object.assign({}, defaultForm),
             counter: 200,
             bodyRules: [v => v.length <= this.counter || `Max ${this.counter} characters`],
@@ -51,11 +53,30 @@ export const TextPostForm = {
     computed: {
     },
     methods: {
+        checkInput(el){
+            var val=el.scrollHeight;
+            var h=el.offsetHeight;
+            if(this.originInputSize == false) this.originInputSize = h;
+            if(val>h){
+                h=h+50
+                el.style.height=`${h}px`;
+            }
+            if(el.value == '') el.style.height=`${this.originInputSize}px`;
+        },
         formIsValid () {
             this.form.title && this.form.body ? this.$emit('formisvalid') : false;
             !this.form.title || !this.form.body ? this.$emit('formisnotvalid') : false;
         },
     },
     mounted(){
+        let _this = this
+        _this.$nextTick(function(){
+            let input = document.getElementById('text-post-body')
+            if (input) {
+                input.addEventListener('keyup', function(){
+                    _this.checkInput(input)
+                })
+            }
+        })
     }
 };
