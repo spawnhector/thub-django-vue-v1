@@ -23,6 +23,7 @@ import { ProfileTooltip } from "./components/profileTooltip.js";
 import { CommentAvatar } from "./components/comment_avatar.js";
 import { ChipGroup } from "./components/chipGroup.js";
 import { PostMenu } from "./components/postMenu.js";
+import { TextPostForm } from "./components/forms/textPostForm.js";
 
 if(document.getElementById('app')){
     Vue.component("Navbar", Navbar);
@@ -46,6 +47,7 @@ if(document.getElementById('app')){
     Vue.component("profile-tooltip", ProfileTooltip);
     Vue.component("comment-avatar", CommentAvatar);
     Vue.component("post-menu", PostMenu);
+    Vue.component("text-post-form", TextPostForm);
     Vue.component("chip-group", ChipGroup);
     Vue.component("react", ReactVueWrapper());
     var app = new Vue({

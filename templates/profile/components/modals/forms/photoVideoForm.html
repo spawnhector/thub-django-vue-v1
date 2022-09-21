@@ -1,0 +1,18 @@
+{% for field in photoVideoPostForm %}
+<v-row>
+    <v-col
+        cols="6"
+    >
+        <div class="fieldWrapper">
+            {{ field.label_tag }} 
+            {{ field }}
+            <span class="focus-border"></span>
+            {{ field.errors }}
+        </div>
+    <v-col/>
+    <v-col
+        cols="6"
+    >
+    <v-col/>
+</v-row>
+{% endfor %}

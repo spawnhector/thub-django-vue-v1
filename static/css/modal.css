@@ -209,7 +209,7 @@
 
    .content-items .fieldWrapper label {
        float: left;
-       width: 55px;
+       width: 100px;
    }
 
    .content-items .fieldWrapper input {}
@@ -231,6 +231,18 @@
 
    .content-items .fieldWrapper textarea:focus {
        outline: none;
+   }
+
+   .fieldWrapper .theme--light.v-counter {
+       color: white;
+   }
+
+   .fieldWrapper .theme--light.v-label {
+       color: white;
+   }
+
+   .fieldWrapper .theme--light.v-messages {
+       color: white;
    }
 
    /* input animation */

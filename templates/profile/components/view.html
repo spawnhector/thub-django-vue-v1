@@ -120,14 +120,14 @@
                         </div>
                     </div>
                     <div class="m-mrg" id="composer">
-                        <div id="c-tabs-cvr">
+                        {% comment %} <div id="c-tabs-cvr">
                             <div class="tb" id="c-tabs">
                             <div class="td active"><i class="material-icons">subject</i><span>Make Post</span></div>
                             <div class="td"><i class="material-icons">camera_enhance</i><span>Photo/Video</span></div>
                             <div class="td"><i class="material-icons">videocam</i><span>Live Video</span></div>
                             <div class="td"><i class="material-icons">event</i><span>Life Event</span></div>
                             </div>
-                        </div>
+                        </div> {% endcomment %}
                         <div id="c-c-main">
                             <div class="tb">
                             <div class="td" id="p-c-i"><img src="https://imagizer.imageshack.com/img921/3072/rqkhIb.jpg" alt="Profile pic"></div>
@@ -143,6 +143,9 @@
                             <div class="post">
                                 {% if post.post_type == 'text' %}
                                     {% include './post-type/text-post.html' %}
+                                {% endif %}
+                                {% if post.post_type == 'photo_video' %}
+                                    {% include './post-type/photoVideoPost.html' %}
                                 {% endif %}
                                 <div>
                                     <div class="p-acts">

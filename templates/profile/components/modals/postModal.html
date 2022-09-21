@@ -10,9 +10,12 @@
                         </div>
                         <div class="header__version"></div>
                     </div>
-                    <form class="forms_form" action="{% url 'makePost' %}"  method="POST"  enctype="multipart/form-data">
+                    <form class="forms_form" action="{% url 'makePost' %}"  method="POST"
+                        ref="form"
+                        @submit.prevent="submit"
+                        enctype="multipart/form-data"
+                    >
                         {% csrf_token %}
-                        <input hidden name="post_type" value="text"/>
                         <input hidden id="post_category_id" name="post_category" value=""/>
                         <div class="main">
                             <template>
@@ -21,9 +24,10 @@
                                         <v-tabs
                                             v-model="tab"
                                             background-color="transparent"
+                                            transition="fade"
                                             hide-slider
                                             height="40"
-                                                id="c-tabs"
+                                            id="c-tabs"
                                         >
                                             <v-tab
                                                 v-for="item in tabs"
@@ -45,28 +49,47 @@
                                         </div>
                                         <div class="tab-content-body">
                                             <v-tab-item
+                                                transition="scale-transition" 
                                                 v-for="tab_item in tabs"
                                                 :key="tab_item"
                                             >
                                                 <div class="content-items">
-                                                    {% for field in form %}
-                                                        <div class="fieldWrapper">
-                                                            {{ field.label_tag }} 
-                                                            {{ field }}
-                                                            <span class="focus-border"></span>
-                                                            {{ field.errors }}
-                                                        </div>
-                                                    {% endfor %}
+                                                    <div v-if="tab == 0">
+                                                        {{form}}
+                                                    </div>
+                                                    <div v-if="tab == 1">
+                                                        <input hidden name="post_type" value="photo_video"/>
+                                                        {% include './forms/photoVideoForm.html' %}
+                                                    </div>
+                                                    <div v-if="tab == 2">
+                                                        <input hidden name="post_type" value="live_video"/>
+                                                        {% include './forms/liveVideoForm.html' %}
+                                                    </div>
+                                                    <div v-if="tab == 3">
+                                                        <input hidden name="post_type" value="life_event"/>
+                                                        {% include './forms/lifeEventForm.html' %}
+                                                    </div>
                                                 </div>
                                             </v-tab-item>
                                         </div>
                                     </v-tabs-items>
+                                    <div class="actions">
+                                        <v-btn
+                                            class="action action--logout"
+                                            @click="closeModal"
+                                        >
+                                            Cancel
+                                        </v-btn>
+                                        <v-btn
+                                            :disabled="!formValid"
+                                            class="action action--sync"
+                                            type="submit"
+                                        >
+                                            Post
+                                        </v-btn>
+                                    </div>
                                 </div>
                             </template>
-                            <div class="actions">
-                                <div class="action action--logout" @click="closeModal">Cancel</div>
-                                <button type="submit" class="action action--sync" >Post</button>
-                            </div>
                         </div>
                     </form>
                 </div>

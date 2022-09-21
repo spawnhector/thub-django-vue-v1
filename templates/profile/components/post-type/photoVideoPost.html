@@ -1,0 +1,79 @@
+{% load profile_tags %}
+<div class="tb">
+    <a href="#" class="td p-p-pic"><img src="https://imagizer.imageshack.com/img923/2452/zifFKH.jpg" alt="Rajeev's profile pic"></a>
+    <div class="td p-r-hdr">
+        <div class="p-u-info">
+            New Post <a href="#">Himalaya Singh</a>
+        </div>
+        <div class="p-dt">
+            <i class="material-icons">calendar_today</i>
+            <span>
+                {{post.date}}
+            </span>
+            <v-chip
+                color="primary"
+                outlined
+                pill
+                small
+            >
+                {{post.category}}
+            </v-chip>
+        </div>
+        <div class="p-u-head">
+            {% if post.title %}<span>{{post.title}}</span>{% endif %}
+        </div>
+    </div>
+     <div class="td p-opt">
+        <v-menu
+            :nudge-width="100"
+            offset-x
+            bottom
+            left
+            transition="scale-transition"
+        >
+            <template v-slot:activator="{ on: menu, attrs }">
+                <v-tooltip bottom>
+                    <template v-slot:activator="{ on: tooltip }">
+                        <v-btn
+                        icon
+                        v-bind="attrs"
+                        v-on="{ ...tooltip, ...menu }"
+                        >
+                            <v-icon>mdi-dots-vertical</v-icon>
+                        </v-btn>
+                    </template>
+                    <span>more</span>
+                </v-tooltip>
+            </template>
+            <post-menu username="{{post.user.user_name}}"></post-menu>
+        </v-menu>
+    </div>
+</div>
+{% comment %} <div class="p-cnt-v"> {% endcomment %}
+<div class="tb fs-17">
+    {% for image in post.images.all %}
+        {% if image.file.url %}
+            <v-img
+                src="{{ image.file.url }}"
+                lazy-src="{{ image.file.url }}"
+                aspect-ratio="1"
+                max-height="360"
+                max-width="650"
+                class="grey lighten-2"
+            >
+                <template v-slot:placeholder>
+                <v-row
+                    class="fill-height ma-0"
+                    align="center"
+                    justify="center"
+                >
+                    <v-progress-circular
+                    indeterminate
+                    color="grey lighten-5"
+                    ></v-progress-circular>
+                </v-row>
+                </template>
+            </v-img>
+        {% endif %}
+    {% endfor %}   
+</div>
