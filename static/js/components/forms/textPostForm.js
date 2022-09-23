@@ -5,11 +5,14 @@ export const TextPostForm = {
             <div class="fieldWrapper">
                 <v-text-field
                     v-model="form.title"
+                    name="title"
                     :rules="titleRules"
                     class="create-post-title effect-3"
                     :counter="counter" 
                      dense
                      label="Post Title"
+                    id="text-post-title"
+                    value=""
                 ></v-text-field>
             </div>
             <div class="fieldWrapper">
@@ -25,6 +28,7 @@ export const TextPostForm = {
                     dense
                     label="Post Content"
                     id="text-post-body"
+                    value=""
                 ></v-textarea>
             </div>
         </div>
@@ -64,11 +68,16 @@ export const TextPostForm = {
             if(el.value == '') el.style.height=`${this.originInputSize}px`;
         },
         formIsValid () {
+            let input = document.getElementById('text-post-body')
+            let input1 = document.getElementById('text-post-title')
+            input1.value = this.form.title
+            input.value = this.form.body
             this.form.title && this.form.body ? this.$emit('formisvalid') : false;
             !this.form.title || !this.form.body ? this.$emit('formisnotvalid') : false;
         },
     },
     mounted(){
+        this.$emit('formisnotvalid')
         let _this = this
         _this.$nextTick(function(){
             let input = document.getElementById('text-post-body')

@@ -23,7 +23,7 @@ def storePhotoVideoPost(request,post_type):
         post_category = request.POST['post_category']
         post = Post.objects.create_photo_video_post(user=request.user,post_type=post_type,category=post_category)
         postImage = PostImages.objects.store_post_images(file=file,post_id=post.id)
-
+        
 def make_post(request):
     if request.method == 'POST':
         post_type = request.POST['post_type']
@@ -32,6 +32,6 @@ def make_post(request):
         if post_type == 'photo_video':
             storePhotoVideoPost(request=request,post_type=post_type)
         
-        messages.success(request, 'Post Created.')
+        messages.success(request, 'Post Created')
         return HttpResponseRedirect(reverse('profile'))
     return HttpResponseRedirect(reverse('profile'))

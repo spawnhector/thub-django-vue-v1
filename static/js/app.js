@@ -24,6 +24,9 @@ import { CommentAvatar } from "./components/comment_avatar.js";
 import { ChipGroup } from "./components/chipGroup.js";
 import { PostMenu } from "./components/postMenu.js";
 import { TextPostForm } from "./components/forms/textPostForm.js";
+import { PhotoVideoPostForm } from "./components/forms/photoVideoPostForm.js";
+import { LazyImage } from "./components/lazyImage.js";
+import { PreviewDialog } from "./components/imagePreviewDialog.js";
 
 if(document.getElementById('app')){
     Vue.component("Navbar", Navbar);
@@ -48,7 +51,10 @@ if(document.getElementById('app')){
     Vue.component("comment-avatar", CommentAvatar);
     Vue.component("post-menu", PostMenu);
     Vue.component("text-post-form", TextPostForm);
+    Vue.component("photo-video-post-form", PhotoVideoPostForm);
+    Vue.component("lazy-image", LazyImage);
     Vue.component("chip-group", ChipGroup);
+    Vue.component("preview-dialog", PreviewDialog);
     Vue.component("react", ReactVueWrapper());
     var app = new Vue({
         el: "#app",

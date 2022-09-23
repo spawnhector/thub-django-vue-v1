@@ -8,7 +8,7 @@ def profile(request):
     return render(request,'profile/index.html',{
         "data": tempData(),
         "form": CreatePostForm().render('django/forms/widgets/createTextPostForm.html'),
-        "photoVideoPostForm": CreatePhotoVideoPostForm(),
+        "photoVideoPostForm": CreatePhotoVideoPostForm().render('django/forms/widgets/createPhotoVideoPostForm.html'),
         "commentForm": MakeCommentForm(),
         "commentReplyForm": MakeCommentReplyForm(),
     })

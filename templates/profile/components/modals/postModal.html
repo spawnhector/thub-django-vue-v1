@@ -49,7 +49,7 @@
                                         </div>
                                         <div class="tab-content-body">
                                             <v-tab-item
-                                                transition="scale-transition" 
+                                                transition="fade-transition" 
                                                 v-for="tab_item in tabs"
                                                 :key="tab_item"
                                             >
@@ -58,8 +58,7 @@
                                                         {{form}}
                                                     </div>
                                                     <div v-if="tab == 1">
-                                                        <input hidden name="post_type" value="photo_video"/>
-                                                        {% include './forms/photoVideoForm.html' %}
+                                                        {{photoVideoPostForm}}
                                                     </div>
                                                     <div v-if="tab == 2">
                                                         <input hidden name="post_type" value="live_video"/>
