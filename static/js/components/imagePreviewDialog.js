@@ -82,24 +82,24 @@ export const PreviewDialog = {
         return {
             previewEditorTopOpt: [
                 {
-                    icon: 'mdi-domain',
-                    color: 'green darken-2'
+                    icon: 'mdi-magnify-plus-cursor',
+                    color: '#424242'
                 },
                 {
-                    icon: 'mdi-domain',
-                    color: 'green darken-2'
+                    icon: 'mdi-magnify-minus-cursor',
+                    color: '#424242'
                 },
                 {
-                    icon: 'mdi-domain',
-                    color: 'green darken-2'
+                    icon: 'mdi-history',
+                    color: '#424242'
                 },
                 {
-                    icon: 'mdi-domain',
-                    color: 'green darken-2'
+                    icon: 'mdi-undo-variant',
+                    color: '#424242'
                 },
                 {
-                    icon: 'mdi-domain',
-                    color: 'green darken-2'
+                    icon: 'mdi-redo-variant',
+                    color: '#424242'
                 },
             ]
         };
